@@ -11,7 +11,8 @@ import { UserConversationView } from "./View/UserConversationView";
 
 import { API_BASE_URL } from "./statics";
 
-const isTest = true;
+const isTest = process.env.ENVIRONMENT == "test";
+
 const cacheService = new SimpleCacheService();
 const fetchService = isTest
   ? new MockFetchSerice(API_BASE_URL)
