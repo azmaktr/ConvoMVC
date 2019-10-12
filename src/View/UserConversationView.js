@@ -30,6 +30,11 @@ export class UserConversationView {
     if ("from_user_id" in conversationMessage.latest_message) {
       delete conversationMessage.latest_message.from_user_id;
     }
+    if ("conversation_id" in conversationMessage.latest_message) {
+      conversationMessage.latest_message.id =
+        conversationMessage.latest_message.conversation_id;
+      delete conversationMessage.latest_message.conversation_id;
+    }
     conversationMessage["latest_message"]["from_user"] = user;
     return conversationMessage;
   }
@@ -51,7 +56,6 @@ export class UserConversationView {
     );
 
     const cUserMsgs = await Promise.all(cMsgs.map(c => this.mapUserWithMsg(c)));
-
     return this.sortByDate(cUserMsgs);
   }
 }

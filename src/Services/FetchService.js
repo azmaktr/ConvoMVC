@@ -21,6 +21,7 @@ export class FetchService {
     this.fetch = fetch;
   }
   async get(endPoint, retries = 3, retryAfter = 100) {
+    // TODO: IMplement Exponential Backoff.
     const url = this.baseURL + endPoint;
     const request = await this.fetch(url);
     const json = await request.json();
