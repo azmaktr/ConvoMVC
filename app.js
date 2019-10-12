@@ -1,24 +1,35 @@
 import { SimpleCacheService } from "./Services/CacheService";
 import { FetchService, MockFetchSerice } from "./Services/FetchService";
 
-import UserModel from "./Model/UserModel";
-import ConversationModel from "./Model/ConversationModel";
+import { UserModel } from "./Model/UserModel";
+import { ConversationModel } from "./Model/ConversationModel";
 
-import UserController from "./Controller/UserController";
-import ConversationController from "./Controller/ConversationController";
+import { UserController } from "./Controller/UserController";
+import { ConversationController } from "./Controller/ConversationController";
 
-const cacheService = new SimpleCacheService();
-const fetchService = window.testingEnvironemnt
-  ? new MockFetchSerice(API_BASE_URL)
-  : new FetchService(API_BASE_URL);
+import { UserConversationView } from "./View/UserConversationView";
 
-const userModel = new UserModel(cacheService, fetchService);
-const conversationModel = new ConversationModel(cacheService, fetchService);
+import { API_BASE_URL } from "./statics";
 
-const conversation = new ConversationController(conversationModel);
-const user = new UserController(userModel);
+const getRecentConversationSummaries = async () => {
+  const isTest = true;
+  const cacheService = new SimpleCacheService();
+  const fetchService = isTest
+    ? new MockFetchSerice(API_BASE_URL)
+    : new FetchService(API_BASE_URL);
 
-conversationsView = new ConversationsView(conversation, user);
-const result = await conversationsView.getRecentConversationSummaries();
+  const userModel = new UserModel(cacheService, fetchService);
+  const conversationModel = new ConversationModel(cacheService, fetchService);
 
-console.log(result);
+  const conversation = new ConversationController(conversationModel);
+  const user = new UserController(userModel);
+
+  const conversationsView = new UserConversationView(conversation, user);
+  return await conversationsView.getRecentConversationSummaries();
+};
+
+try {
+  console.log(getRecentConversationSummaries());
+} catch (err) {
+  console.err(err);
+}

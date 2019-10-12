@@ -1,4 +1,4 @@
-class UserConversationsView {
+export class UserConversationView {
   constructor(conversationController, userController) {
     this.conversationController = conversationController;
     this.userController = userController;

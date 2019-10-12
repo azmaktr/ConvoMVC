@@ -1,3 +1,5 @@
+import { BaseModel } from "./BaseModel";
+import { ENDPOINTS } from "./../statics/";
 export class ConversationModel extends BaseModel {
   async fetchConversations(tryCache = false) {
     return await this.get(ENDPOINTS.conversations(), 3, tryCache);

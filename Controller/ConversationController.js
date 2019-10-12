@@ -1,3 +1,5 @@
+import { BaseController } from "./BaseController";
+
 export class ConversationController extends BaseController {
   constructor(conversationModel) {
     super();

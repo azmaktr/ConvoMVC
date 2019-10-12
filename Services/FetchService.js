@@ -1,9 +1,13 @@
+import fetch from "node-fetch";
+import { MOCKS } from "../MOCKS/";
+
 export class MockFetchSerice {
-  async get(endPoint, retries = 3, retryAfter = 100) {
-    if (!MOCKS[endpoint]) {
-      throw `Please add mock response for ${endpoint}`;
+  async get(endPoint) {
+    const resp = MOCKS[endPoint];
+    if (!resp) {
+      throw `Please add mock response for ${endPoint}`;
     }
-    return Promise.resolve(MOCKS[endpoint]);
+    return Promise.resolve(resp);
   }
 }
 
@@ -14,14 +18,12 @@ export class FetchService {
     }
     this.baseURL = baseURL;
     // This should be injected too.
-    this.fetch = window.fetch.bind(window);
+    this.fetch = fetch;
   }
   async get(endPoint, retries = 3, retryAfter = 100) {
     const url = this.baseURL + endPoint;
-    try {
-      const request = await this.fetch(url);
-      const json = await request.json();
-      return json;
-    } catch (err) {}
+    const request = await this.fetch(url);
+    const json = await request.json();
+    return json;
   }
 }
