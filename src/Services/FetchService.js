@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { MOCKS } from "../MOCKS/";
+import { MOCKS } from "../Mocks";
 
 export class MockFetchSerice {
   async get(endPoint) {

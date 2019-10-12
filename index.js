@@ -1,15 +1,15 @@
-import { SimpleCacheService } from "./Services/CacheService";
-import { FetchService, MockFetchSerice } from "./Services/FetchService";
+import { SimpleCacheService } from "./src/Services/CacheService";
+import { FetchService, MockFetchSerice } from "./src/Services/FetchService";
 
-import { UserModel } from "./Model/UserModel";
-import { ConversationModel } from "./Model/ConversationModel";
+import { UserModel } from "./src/Model/UserModel";
+import { ConversationModel } from "./src/Model/ConversationModel";
 
-import { UserController } from "./Controller/UserController";
-import { ConversationController } from "./Controller/ConversationController";
+import { UserController } from "./src/Controller/UserController";
+import { ConversationController } from "./src/Controller/ConversationController";
 
-import { UserConversationView } from "./View/UserConversationView";
+import { UserConversationView } from "./src/View/UserConversationView";
 
-import { API_BASE_URL } from "./statics";
+import { API_BASE_URL } from "./src/statics";
 
 const isTest = false;
 const cacheService = new SimpleCacheService();

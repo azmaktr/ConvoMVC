@@ -6,17 +6,21 @@
   "scripts": {
     "build": "rm -rf dist && webpack --mode development",
     "runServer": "node ./dist/app.js",
-    "start": "npm run build && npm run runServer"
+    "start": "npm run build && npm run runServer",
+    "test": "mocha-webpack src/**/*.spec.js --mode development"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.1",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "babel-loader": "^8.0.6",
+    "mocha-webpack": "^2.0.0-beta.0",
     "webpack": "^4.41.1",
     "webpack-cli": "^3.3.9",
     "webpack-node-externals": "^1.7.2"
