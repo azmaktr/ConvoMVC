@@ -4,13 +4,13 @@ This is an MVC based implementation of proxy passthrough for conversations API.
 
 ## MVC Explanation
 
-Models: BaseModel <--- (User, Conversation ) Model
-Controllers: BaseController <--- (User, Conversation) Controller
-Views: UserConversation View.
+- Models: BaseModel <--- (User, Conversation ) Model
+- Controllers: BaseController <--- (User, Conversation) Controller
+- Views: UserConversation View.
 
 --
 
-Service: Fetch Service, Cache Services.
+- Service: Fetch Service, Cache Services.
 
 ## Run the project
 
@@ -45,3 +45,4 @@ Service: Fetch Service, Cache Services.
 - Implement Exponential BackOff for Fetch Service.
 - Implement API throttle for Fetch Service if there is an API limit.
 - Refactor Code where todo commented.
+- Implement Dependency injection for Views, Controllers, and Models.
