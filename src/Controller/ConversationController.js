@@ -26,15 +26,12 @@ export class ConversationController extends BaseController {
     return await this.conversationModel.fetchMessages(conversationId);
   }
   // can do a generic sort function that receives a key and sort by that key.
+  // or a static method
   sortByDate(conversations) {
     return conversations.sort((a, b) => {
-      if (a.created_at < b.created_at) {
-        return 1;
-      }
-      if (a.created_at > b.created_at) {
-        return -1;
-      }
-      return 0;
+      const dateA = new Date(a.created_at);
+      const dateB = new Date(b.created_at);
+      return dateA < dateB ? 1 : dateA > dateB ? -1 : 0;
     });
   }
 }
