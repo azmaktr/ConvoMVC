@@ -1,5 +1,5 @@
-import { SimpleCacheService } from "./Services/CacheService";
-import { FetchService, MockFetchSerice } from "./Services/FetchService";
+import { SimpleCacheService } from "./Service/CacheService";
+import { FetchService, MockFetchSerice } from "./Service/FetchService";
 
 import { UserModel } from "./Model/UserModel";
 import { ConversationModel } from "./Model/ConversationModel";
