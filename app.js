@@ -12,7 +12,7 @@ import { UserConversationView } from "./View/UserConversationView";
 import { API_BASE_URL } from "./statics";
 
 const getRecentConversationSummaries = async () => {
-  const isTest = true;
+  const isTest = false;
   const cacheService = new SimpleCacheService();
   const fetchService = isTest
     ? new MockFetchSerice(API_BASE_URL)
@@ -28,8 +28,6 @@ const getRecentConversationSummaries = async () => {
   return await conversationsView.getRecentConversationSummaries();
 };
 
-try {
-  console.log(getRecentConversationSummaries());
-} catch (err) {
-  console.err(err);
-}
+getRecentConversationSummaries()
+  .then(console.log)
+  .catch(console.error);
