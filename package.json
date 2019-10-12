@@ -7,7 +7,7 @@
     "build": "rm -rf dist && webpack --mode development",
     "runServer": "node ./dist/app.js",
     "start": "npm run build && npm run runServer",
-    "test": "mocha-webpack src/**/*.spec.js --mode development"
+    "test": "npm run build && mocha-webpack src/**/*.spec.js --mode development"
   },
   "author": "",
   "license": "ISC",
