@@ -6,7 +6,8 @@ export class UserConversationView {
 
   async mapConversationsWithMsgs(conversation) {
     const msg = await this.conversationController.getLatestMsg(conversation.id);
-    return { ...conversation, msg };
+    // console.log(msg);
+    return { ...conversation, latest_message: msg };
   }
 
   async getRecentConversationSummaries() {
@@ -16,8 +17,7 @@ export class UserConversationView {
     const cMsgs = await Promise.all(
       fc.map(c => this.mapConversationsWithMsgs(c))
     );
-    //const conversations
+
     return cMsgs;
-    // TODO: Map users, sort and send.
   }
 }

@@ -16,13 +16,25 @@ export class ConversationController extends BaseController {
 
   async getLatestMsg(conversationId) {
     const msgs = await this.getConversatioById(conversationId);
-    // TODO: Find the latest message.
+
+    if (msgs.length === 0) return {};
+
+    // Return the first message of the sorted array i-e latest message
+    return this.sortByDate(msgs)[0];
   }
   async getConversatioById(conversationId) {
     return await this.conversationModel.fetchMessages(conversationId);
   }
   // can do a generic sort function that receives a key and sort by that key.
   sortByDate(conversations) {
-    return conversations;
+    return conversations.sort((a, b) => {
+      if (a.created_at < b.created_at) {
+        return 1;
+      }
+      if (a.created_at > b.created_at) {
+        return -1;
+      }
+      return 0;
+    });
   }
 }
