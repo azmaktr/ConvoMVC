@@ -47,4 +47,4 @@ This is an MVC based implementation of proxy passthrough for conversations API.
 - Refactor Code where todo commented.
 - Implement Dependency injection for Views, Controllers, and Models.
 - Use Typescript instead of Javascript.
-- Read API_BASE_URL from .env file
+- Read API_BASE_URL from .env file - Done
