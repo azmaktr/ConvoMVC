@@ -9,14 +9,14 @@ import { ConversationController } from "./Controller/ConversationController";
 
 import { UserConversationView } from "./View/UserConversationView";
 
-import { API_BASE_URL } from "./statics";
+require("dotenv").config();
 
 const isTest = process.env.ENVIRONMENT == "test";
 
 const cacheService = new SimpleCacheService();
 const fetchService = isTest
-  ? new MockFetchSerice(API_BASE_URL)
-  : new FetchService(API_BASE_URL);
+  ? new MockFetchSerice(process.env.API_BASE_URL)
+  : new FetchService(process.env.API_BASE_URL);
 
 const userModel = new UserModel(cacheService, fetchService);
 const conversationModel = new ConversationModel(cacheService, fetchService);
